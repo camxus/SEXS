@@ -1,0 +1,10 @@
+module.exports = `
+  type STD {
+    _id: ID
+    name: String
+    label: String
+    duration: Float
+    contagiousness: Float
+    type: String
+  }
+`

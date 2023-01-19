@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "cam",
+        "MONGO_PASSWORD": "hEGJElpqIjibr98f",
+        "MONGO_DB": "test"
+    }
+}

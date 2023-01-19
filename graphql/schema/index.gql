@@ -1,0 +1,43 @@
+module.exports = `
+  # QUERY  
+  type RootQuery {
+    refreshToken(refreshToken: String): String
+    login(email: String! password: String!): AuthData!
+
+    checkUsernames(username: String): String
+    checkEmails(email: String): String
+
+    user(username: String): User
+    userById(ID: ID!): User
+    me: User
+
+    stds: [STD]
+  }
+
+  # MUTATION  
+  type RootMutation {
+    createUser(userInput: UserInput): User
+    deactivateUser: String
+    deleteUser: String
+
+    addPartner(partnerId: ID): User
+    removePartner(partnerId: ID): User
+    setCanSee(partnerId: ID): Partner
+
+    hidePartner(partnerId: ID): User
+    unhidePartner(partnerId: ID): User
+
+    addCycles(cycle: CycleInput): Cycle
+    logCycleData(cycle: CycleInput): Cycle
+
+    submitSTDReport(diagnosis: String): String
+    submitIncidentReport(userId: ID): String
+
+    submitTest: String
+  }
+
+  schema {
+    query: RootQuery
+    mutation: RootMutation
+  }
+`

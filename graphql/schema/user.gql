@@ -1,0 +1,178 @@
+module.exports = `
+  type Health {
+    tested: Boolean
+    history: [UserSTD]
+  }
+
+  type UserSTD {
+    std_id: ID
+    log_date: String
+    release_date: String
+  }
+
+  type Report {
+    report: ID
+    type: String
+    date: String
+    userId: ID
+  }
+
+  type Violation {
+    date: String
+    userId: ID
+  }
+
+  type Request {
+    status: String
+    date_accepted: String
+    date_requested: String
+    date_declined: String
+  }
+  type Hidden {
+    value: Boolean
+    date: String
+  }
+  type Blocked {
+    value: Boolean
+    date: String
+  }
+  type CanSee {
+    cycle: Boolean
+    health_status: Boolean
+  }
+  # union requestAcceptedUnion = Boolean
+  type Partner {
+    userId: ID!
+    request: Request
+    hidden: Hidden
+    blocked: Blocked
+    can_see: CanSee
+  }
+
+  type CycleLenghtData {
+    luteal_phase_daterange: [String]
+    menstruation_daterange: [String]
+    ovulation_date: String
+    fertility_daterange: [String]
+  }
+  input InputCycleLenghtData {
+    luteal_phase_daterange: [String]
+    menstruation_daterange: [String]
+    ovulation_date: String
+    fertility_daterange: [String]
+  }
+  type EstimatedNextPeriod {
+    luteal_phase_daterange: [String]
+    menstruation_daterange: [String]
+    ovulation_date: String
+    fertility_daterange: [String]
+  }
+  type LutealPhaseData {
+    max_luteal_phase_length: Float
+    avg_luteal_phase_length: Float
+  }
+  type MensturationData {
+    logged_menstruation_length: Float
+    avg_menstruation_length: Float
+    max_menstruation_length: Float
+    menstruation_avg_drift: Float
+    menstruation_max_drift: Float
+  }
+  
+  type CycleData {
+    logged_cycle_length: Float
+    avg_cycle_length: Float
+    max_cycle_length: Float
+  }
+  type Cycle {
+      steady: Boolean
+      cycle_data: CycleData
+      menstruation_data: MensturationData
+      luteal_phase_data: LutealPhaseData
+      estimated_next_cycle: EstimatedNextPeriod
+      cycles: [CycleLenghtData]
+  }
+
+  type Name {
+    first_name: String
+    last_name: String
+  }
+  
+  input FullNameInput {
+    first_name: String
+    last_name: String
+  }
+
+  input AttributesInput {
+    username: String!
+    verified: Boolean
+    user_images: [String]
+    name: FullNameInput
+    location: String
+    age: Float
+    birthdate: String
+    gender: String
+    sex: String
+    pronouns: [String]
+  }
+
+  type Attributes {
+    username: String!
+    verified: Boolean
+    user_images: [String]
+    name: Name
+    location: String
+    age: Float
+    birthdate: String
+    gender: String
+    sex: String
+    pronouns: [String]
+  }
+
+  type User {
+    _id: ID!
+    email: String!
+    password: String
+    attributes: Attributes
+    partners: [Partner]
+    violations: [Violation]
+    reported: [Report]
+    health: Health
+    cycle: Cycle
+    deactivated: Boolean
+  }
+
+  # AUTH
+  type AuthData {
+    userId: ID!
+    token: String!
+    refreshToken: String
+    tokenExpiration: Int!
+  }
+
+  # INPUT
+  input EventInput {
+    title: String!
+    description: String!
+    price: Float!
+    date: String!
+  }
+
+  input UserInput {
+    email: String!
+    password: String!
+    attributes: AttributesInput
+  }
+  input InputCycleData {
+    logged_cycle_length: Float
+  }
+  input InputMensturationData {
+    logged_menstruation_length: Float
+  }
+  input CycleInput {
+    steady: Boolean
+    cycle_data: InputCycleData
+    menstruation_data: InputMensturationData
+    cycles: [InputCycleLenghtData]
+  }
+`
