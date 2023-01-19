@@ -1,0 +1,21 @@
+{
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@assets/*": ["src/@core/assets/*"],
+      "@components/*": ["src/@core/components/*"],
+      "@layouts/*": ["src/@core/layouts/*"],
+      "@store/*": ["src/redux/*"],
+      "@styles/*": ["src/@core/scss/*"],
+      "@configs/*": ["src/configs/*"],
+      "@hooks/*": ["./src/utility/hooks/*"],
+      "@utils": ["./src/utility/Utils"],
+      "@views/*": ["./src/views/*"],
+      "@sexs/*": ["./src/sexs/components/*"],
+      "@api/*": ["./src/sexs/api/*"],
+      "@css/*": ["./src/assets/css/*"]
+    }
+  }
+}

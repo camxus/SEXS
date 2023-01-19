@@ -1,0 +1,115 @@
+/*=========================================================================================
+    File Name: sidebar.scss
+    Description: content sidebar specific scss.
+    ----------------------------------------------------------------------------------------
+    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Author: PIXINVENT
+    Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+// Sidebar base
+// ------------------------------
+
+// Base
+.sidebar__container{
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  width: max-content;
+  transition: all 0.3s ease-in-out;
+  @include media-breakpoint-down(lg) {
+    position: absolute;
+    z-index: 10;
+  }
+  &.hidden__init {
+    position: absolute;
+    z-index: 10;
+    &.right{
+        transform: translateX(100%);
+    }
+    &.left{
+        transform: translateX(-100%);
+    }
+    &.show {
+      transform: translateX(0%);
+    }
+  }
+  &.right{
+    top: 0;
+    right: 0;
+    @include media-breakpoint-down(lg) {
+        transform: translateX(100%);
+    }
+  }
+  &.left{
+    top: 0;
+    left: 0;
+    @include media-breakpoint-down(lg) {
+        transform: translateX(-100%);
+    }
+  }
+  &.show {
+    transform: translateX(0%);
+  }
+  .sidebar {
+    position: relative;
+    height: inherit;
+    background-color: white;
+  }
+  .sidebar-fixed {
+    position: fixed;
+    height: 100%;
+    overflow: scroll;
+  }
+  
+  .sidenav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120vh;
+    background-color: rgba($black, 0.5);
+    z-index: 997;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    &.show {
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.5s ease;
+    }
+  }
+  
+  .drag-target {
+    height: 100%;
+    width: 40px;
+    position: fixed;
+    top: 0;
+    left: -10px;
+    z-index: 1036;
+  }
+  
+  .sidebar-detached {
+    .sidebar {
+      width: $sidebar-width;
+    }
+  }
+  
+  @include media-breakpoint-up(lg) {
+    .sidebar-left {
+      float: left;
+    }
+    .sidebar-right {
+      float: right;
+    }
+  }
+  
+  @include media-breakpoint-down(lg) {
+    .sidebar-detached {
+      .sidebar {
+        width: 100%;
+      }
+    }
+  }
+}
